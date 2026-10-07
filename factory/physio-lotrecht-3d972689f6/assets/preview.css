@@ -1,0 +1,2 @@
+.preview-banner{background:repeating-linear-gradient(-45deg,#ffd000 0 18px,#1b1b1b 18px 36px);padding:6px 0}
+.preview-banner p{margin:0 auto;width:min(100% - 2rem,74rem);background:#ffd000;color:#111;font:700 16px/1.4 system-ui,sans-serif;padding:8px 14px;border-radius:4px;text-align:center}
