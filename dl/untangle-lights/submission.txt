@@ -1,0 +1,89 @@
+# Untangle the Lights: portal submission sheet (version 1.0.0)
+
+Copy each block into the matching field. Everything is in English, as the portals require.
+
+## Upload files
+
+| Portal | Stage | File |
+|---|---|---|
+| CrazyGames | Basic Launch, then Full Launch | `dist/untangle-lights-crazygames.zip` (SDK v3, saves through the Data module) |
+| itch.io (optional test page) | any | `dist/untangle-lights-clean.zip` (no SDK, zero network requests; rewarded offers are free) |
+| Poki | only if Poki asks for it | `dist/untangle-lights-poki.zip` (Poki SDK v2) |
+| GameDistribution | any | `dist/untangle-lights-gamedistribution.zip` (replace `GD_GAME_ID` in its `index.html` first) |
+| Playgama, YouTube Playables, GameMonetize | after CrazyGames | `dist-extra/untangle-lights-*.zip` (built by `distribution/build-extra.py --games untangle-lights`; GameMonetize needs its game id in `distribution/ids.json`) |
+
+One `index.html`, 0.19 MB (0.09 MB zipped), fonts embedded, works offline, no external requests. Rebuild after any edit with `python3 build.py`.
+
+## Covers and videos
+
+- CrazyGames: `covers/crazygames-1920x1080.png`, `covers/crazygames-800x1200.png`, `covers/crazygames-800x800.png` (title only, no other words, no border).
+- CrazyGames preview videos (20 s, 30 fps, muted): `preview-1920x1080.mp4` (16:9) and `preview-1080x1620.mp4` (2:3).
+- Poki: `covers/poki-1024x1024.png` and `covers/poki-628x628.png` (square, no text).
+- GameDistribution: `covers/gamedistribution-512x512.png`, `-512x384`, `-512x340`, `-1280x720`, `-1280x550`.
+- Screenshots: `screenshots/phone-*.png` (390x844 at 3x) and `screenshots/desktop-*.png` (1280x720 at 1.5x): first second, a combo, a lit level.
+- Re-render: `python3 tools/render_covers.py`, `python3 tools/capture.py all`.
+
+## Title
+
+Untangle the Lights
+
+## One-line pitch
+
+A box of tangled fairy lights: pull each strand out the way its plug points, in the right order, and light up a snowy town.
+
+## Short description (about 160 characters)
+
+Tap a strand of fairy lights to pull it out the way its plug points. Free them all without a bump, light up the town and collect new light sets.
+
+## Long description
+
+Someone packed the fairy lights in a hurry, and now the box is one big tangle. Tap a strand and it slides out the way its plug points, lights up and flies off to hang over the town. But a strand only gets out if nothing is in its way. Tap one that is blocked and it bumps, and every bump blows a fuse.
+
+Find the strands that are free, pull them in quick succession for combos, and watch the tangle open up. Every board can be solved, and there is never a wrong order: only bumps cost you.
+
+New things keep turning up: presents that never move, frozen strands that thaw when a neighbour leaves, padlocked plugs that open when you free the strand carrying the key, and golden strands that pay you a hint.
+
+Each level lights a window in the town, ten windows light a street. Clear levels without a bump for 3 stars, and stars unlock new light sets: Candy Cane, Icicle, Aurora, Neon Party, Golden and Rainbow (plus a Pumpkin set during Halloween).
+
+Every day there is one Daily board, the same for every player, with a streak and a result line to share. Marathon mode deals board after board until your fuses run out. Stuck? A hint lights up a strand that can go.
+
+## How to play
+
+1. Tap a strand. It slides out in the direction its plug points.
+2. If another strand or a present is in the way, it bumps and you lose a fuse. Lose all your fuses and the lights go out.
+3. Frozen strands thaw when a strand next to them is pulled out. A padlocked strand opens when the strand with its key is pulled out.
+4. Clear the box. No bumps = 3 stars.
+
+## Controls
+
+- Touch or mouse: tap or click a strand to pull it. Tap the bulb button for a hint.
+- Keyboard: arrow keys or WASD to pick a strand, Space or Enter to pull it, H for a hint, M to mute, P or Esc for the menu.
+
+## Category and tags
+
+**CrazyGames**: category Puzzle (also fits Casual). Tags: puzzle, logic, christmas, relaxing, brain, casual, mouse, touch. Single player; do not tick multiplayer.
+**Poki** (suggested; Poki assigns the final placement): Puzzle, Logic, Christmas, Brain.
+Do not use the words Arrows, GO or Escape together anywhere in the listing (an existing mobile title uses them).
+
+## Questionnaire answers
+
+- Multiplayer: no.
+- Orientation: works in portrait and landscape; portrait first on phones.
+- Mobile and tablet: yes, touch controls built in.
+- Languages: English.
+- Saves: progress saved in the browser (CrazyGames: Data module).
+- Ads: `gameplayStart` on the first input and whenever play resumes, `gameplayStop` on every result card, menu, ad and hidden tab. `requestAd('midgame')` only between boards (after a level card, a Marathon board or a retry), never in the first 3 minutes of play or before level 5, at most once every 3 minutes, never within 10 seconds of a rewarded ad and never on the player's first three lights-outs. `requestAd('rewarded')` is always optional: +2 hints (at most 5 a day) or +2 fuses after a lights-out (once per board, once per Marathon run). The reward is paid on `adFinished`. During Basic Launch the SDK answers `adsDisabledBasicLaunch`: the game then pays the reward anyway and the offers say Free.
+- Pause: the game and its sound stop when the tab is hidden and resume when it comes back. The CrazyGames sound button is followed.
+- Age rating: PEGI 3 style. No violence, no fear, no text input, no chat, no data collection, no purchases.
+- Original work: name, rules presentation, art, music and sound are original and made in code. Fonts: Lilita One and Fredoka (SIL Open Font License, licences inside the zip).
+
+## Notes for reviewers
+
+- Gameplay starts on load with no title screen; on level 1 a hand points at the strand to pull.
+- `?level=12` opens a later level, `?theme=aurora` shows another light set, `?event=halloween` shows the Pumpkin set outside its dates.
+
+## What only Younes does (about 30 minutes, then 10 minutes a week)
+
+1. developer.crazygames.com, Submit a game: upload `dist/untangle-lights-crazygames.zip`, paste the title, short and long description, controls, category Puzzle and the tags above; add the three covers and the two preview videos; orientation both, not multiplayer. Submit for Basic Launch.
+2. Optional, same day: itch.io new project, kind HTML, upload `dist/untangle-lights-clean.zip`, tick "This file will be played in the browser", viewport 540x960, mobile friendly. This is the cheap second reading of the bet (no money there).
+3. Read the CrazyGames dashboard 14 days after go-live. Pass mark from the trend bet: invited to Full Launch, or 2,000 plays with an average session of 3 minutes or more. Kill rule: under 500 plays at day 14.

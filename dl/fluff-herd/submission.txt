@@ -1,0 +1,123 @@
+# Fluff Herd.io: portal submission sheet (version 1.0.0)
+
+Copy each block into the matching field. Everything below is in English, as the portals require.
+
+## Upload files
+
+| Portal | Stage | File |
+|---|---|---|
+| CrazyGames | Basic Launch, then Full Launch | `dist/fluff-herd-crazygames.zip` (SDK v3, Data module saves) |
+| GameDistribution | any | `dist/fluff-herd-gamedistribution.zip` (replace `GD_GAME_ID` in its `index.html` first) |
+| Poki | only if Poki opens again (early access was declined on 2026-10-08) | `dist/fluff-herd-poki.zip` |
+| Playgama, YouTube Playables, GameMonetize | after CrazyGames, see `../distribution/STRATEGY.md` | `dist-extra/fluff-herd-*.zip` (built by `../distribution/build-extra.py`) |
+| itch.io or self-hosting | any | `dist/fluff-herd-clean.zip` (no SDK, zero network requests) |
+
+One `index.html`, 0.25 MB (zip 0.11 MB), fonts embedded, works offline. Rebuild after any edit with `python3 build.py`.
+
+## Owner upload steps (CrazyGames, about 30 minutes)
+
+1. Sign in at https://developer.crazygames.com and choose "Submit a game" (HTML5).
+2. Title: `Fluff Herd.io`. Upload `dist/fluff-herd-crazygames.zip`. Orientation: both. Mobile: yes.
+3. Covers: `covers/crazygames-1920x1080.png` (landscape), `covers/crazygames-800x1200.png` (portrait), `covers/crazygames-800x800.png` (square).
+4. Preview video if the form asks: `gameplay-20s.mp4` (landscape, 20 s) and `gameplay-20s-vertical.mp4` (portrait).
+5. Paste the short description, long description, controls and tags from below. Category `.io`, second choice `Casual`.
+6. Multiplayer: **No** (the rivals are bots). Do not tick online multiplayer.
+7. Age questions: the answers under "Age suitability" below. Leave payout and tax fields for Full Launch.
+8. Submit. Review takes a day or two, Basic Launch then runs 7 to 21 days with ads off. Read the dashboard after 7 days and 500 plays: pass is average playtime 9 min or more, 80% past 1 minute, D1 5.7% or more (G9 test rule).
+
+Ads during Basic Launch: CrazyGames switches ads off, so every rewarded request ends in `adError`. The game then grants the reward anyway ("Free this time!"), so the x2 wool, offline x2 and dog crate offers keep working and the Basic Launch metrics measure the full loop. From Full Launch the same buttons play a real rewarded ad and pay on `adFinished`; if an ad cannot be shown on CrazyGames (no fill, ad blocker) the reward is still granted. On the other portals (Poki, GameDistribution, and the YouTube, Playgama and GameMonetize shims) the reward is paid only after a watched ad, as the house variant tests require.
+
+## Title
+
+Fluff Herd.io
+
+## One-line pitch
+
+You are a sheepdog: push fluffy flocks into your pen, bark to scatter the other dogs' flocks, and steer a 200-sheep stampede home.
+
+## Short description (up to about 160 characters)
+
+Be a sheepdog. Push fluffy flocks into your pen, bark to scatter your rivals' flocks and steer the stampede home. Your farm earns between rounds.
+
+## Long description
+
+You are a sheepdog in a meadow full of fluffy sheep, and so are nine other dogs. Sheep run away from dogs, so you never grab them: you get behind a flock and push it, and the whole flock pours through your gate. The bigger the flock, the bigger the combo.
+
+Bark to scatter every sheep around you. Use it on the flock another dog has spent a minute building, right in front of their gate, or use it to blast your own flock through the last few metres.
+
+Every round brings its own surprises: a Golden Sheep worth 10, a mythic Rainbow Sheep worth 25, a wolf that goes for the biggest flock (bark to chase it off), and at 2:30 the ground shakes. A stampede of 200 sheep follows a bell ram across the meadow. Push the ram into your pen and the whole river follows it in.
+
+Every sheep you pen moves to your farm, and the farm grows wool even while you are away. Spend wool on speed, a bigger bark and a wider pen, unlock ten dog breeds from Collie to Robo-Pup, and watch the farm grow a barn, a windmill, a duck pond and more. Rounds last 3 minutes and the next one starts by itself.
+
+Arena game against bots with their own styles: patient shepherds, gate campers, chaos pups, greedy hoarders and rookies who sometimes push sheep into your pen. No account needed, no online players.
+
+## How to play
+
+1. Run behind a flock: sheep flee from you, so push them toward your glowing gate.
+2. Sheep that go through your gate are yours to keep. Bigger flocks make bigger combos.
+3. Bark to scatter every sheep around you: break up a rival's flock, or blast yours through the gate.
+4. Catch the Golden and Rainbow Sheep, bark the wolf away, and steer the bell ram home when the stampede comes.
+5. Spend wool on your farm between rounds: speed, bark, pen size and new dogs.
+
+## Controls
+
+- Mouse: the dog follows the mouse. Click to bark.
+- Touch: drag anywhere to run (a stick appears under your thumb). Tap, tap with a second finger, or press BARK to bark.
+- Keyboard: WASD or the arrow keys to run, Space (or J, Enter) to bark, P or Esc to pause, M to mute.
+
+## Category and tags
+
+**CrazyGames**: category .io, second choice Casual. Tags: animals, io, arena, casual, bots, farm, mouse, touch.
+**Poki** (if it opens): .io; also fits Animal, Casual. Tags: io, sheep, dog, herding, farm, bots, one thumb.
+
+## Orientation and devices
+
+- Works in portrait and landscape, on phone, tablet and desktop. Portrait first on phones.
+- Tested at 390x844 (phone, touch), 1366x768 and 1920x1080 (desktop) and 800x450 at devicePixelRatio 1 (the CrazyGames minimum iframe): cards switch to a compact layout so text stays legible.
+- Adaptive renderer: steps the render scale and effects down on slow phones so frames stay on time.
+- No fullscreen button of its own (portal provides it). Pauses and mutes on tab switch and during ads. Follows the CrazyGames sound button.
+
+## Age suitability
+
+All ages. Cartoon dogs herd cartoon sheep; a bark makes sheep jump, a cartoon wolf chases sheep and runs off with a yelp when barked at. No sheep is hurt, nothing is eaten, no blood. No text input, no chat with real people, no accounts, no personal data; the bots show short canned lines ("gg", "my sheep!!", "ty for the sheep lol") from a fixed list. Saves are local (CrazyGames Data module on CrazyGames). Suitable for a PEGI 3 or 7 style rating, well inside CrazyGames' PEGI 12 ceiling.
+
+## What makes it original
+
+- Indirect control: you never touch the sheep. They are a real flock (boids) that run from dogs and follow each other, so a good push moves 40 sheep at once and a sloppy one scatters them.
+- The bark is attack and tool at once: the same shockwave that ruins a rival's flock blasts your own through your gate.
+- The stampede: 200 sheep follow one bell ram, so steering one animal decides who gets the river (the clip moment, with a combo counter and slow motion).
+- Rounds bank into a farm that grows wool between rounds, with upgrades, ten dog breeds and seven farm buildings.
+- Instant start: the page loads straight into a live meadow and the first drag starts the round. All art and sound are generated in code (0.25 MB single file).
+
+## Cover files
+
+| File | Size | Portal field |
+|---|---|---|
+| `covers/crazygames-1920x1080.png` | 1920x1080 | CrazyGames: landscape cover. Title only. |
+| `covers/crazygames-800x1200.png` | 800x1200 | CrazyGames: portrait cover. Title only. |
+| `covers/crazygames-800x800.png` | 800x800 | CrazyGames: square cover. Title only. |
+| `covers/poki-1024x1024.png`, `covers/poki-628x628.png` | square | Poki: no text, as Poki asks |
+| `covers/gamedistribution-512x512.png`, `-512x384`, `-512x340`, `-1280x720`, `-1280x550` | as named | GameDistribution thumbnails and banners, with the title |
+
+Store screenshots: `screenshots/` (phone first seconds, desktop stampede into the pen, the farm screen). Gameplay video: `gameplay-20s.mp4` (1920x1080, 30 fps, 20 s, no sound) and `gameplay-20s-vertical.mp4` (1080x1620). Re-render covers with `python3 tools/render_covers.py`, captures with `python3 tests/capture.py shots SEED` and `video SEED`.
+
+## Tests (run before every upload)
+
+- `python3 tests/bot.py`: 10 rounds headless with a casual bot (round timing, auto-chain, economy pacing, SDK calls, rewarded with ads on and off), touch and mouse input in real time, and the frame budget with a 400-boid stampede. Results in `tests/bot_result.json`.
+- `python3 tests/checklist.py`: the G5 retention checklist and bot playtest model. Results in `tests/CHECKLIST.md`.
+- `python3 ../distribution/build-extra.py --games fluff-herd` then `python3 ../distribution/tests/test_variants.py fluff-herd <youtube|playgama|gamemonetize>`: the house shim variants.
+
+## Test results (2026-10-12, version 1.0.0)
+
+- Bot soak (`tests/bot.py`): 77 checks, 0 failures. 10 rounds of exactly 180.0 s game time each, chained by themselves from round 4 on; casual bot places [6, 5, 8, 2, 1, 10, 5, 3, 1, 1] (top 3 in 5 of 10, 3 wins); first upgrade bought after round 1; rewarded x2 pays after an ad and also with ads off (Basic Launch); first midgame ad after 540 s of play, then no more than one per 180 s. Phone touch (stick, tap, second finger, BARK button), mouse, WASD, pause on tab hide: all pass. Input accepted 0.62 s after navigation.
+- Frame budget: 441 boids in a stampede cost 1.22 ms of game work per frame (x4 for a phone CPU 4x slower = 4.9 ms against 16.7 ms for 60 fps); normal play 0.57 ms. Spatial hash with 64-unit cells, calm sheep far from dogs think every other step.
+- G5 checklist (`tests/CHECKLIST.md`): HARD 12/12 PASS, soft 10/11, patience model PASS. Predicted (uncalibrated): casual players average 8.0 min, 78% past 3 minutes.
+- House shim variants: YouTube 41, Playgama 37, GameMonetize 19 checks, all pass.
+
+## Update plan (first 8 weeks, one per week, each puts the game in "Recently updated")
+
+1. W1: Sheep dex: 12 breeds with rarities (fluffy, curly, tiny, giant), bred into the field over rounds.
+2. W2: Daily Pasture: one shared-seed round per day with a results card and streak (G5 item 18).
+3. W3: Whistle (unlock at level 5): pulls nearby sheep toward you. New pasture: Snowy Fields.
+4. W4: Rebirth: move to a new valley for a permanent x1.5 wool.
+5. W5 to W8: one new pasture or event a week (candy, moon, festival), new dog breeds, a friends room if Basic Launch passes.

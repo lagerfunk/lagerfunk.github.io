@@ -1,0 +1,96 @@
+# Grow a Sky Garden: portal submission sheet (version 1.0.0)
+
+Copy each block into the matching field. Everything is in English, as both portals require.
+
+## Upload files
+
+| Portal | Stage | File |
+|---|---|---|
+| CrazyGames | Basic Launch, then Full Launch | `dist/grow-a-sky-garden-crazygames.zip` (SDK v3, saves through the Data module) |
+| Poki | Player Fit Test, self-hosted check | `dist/grow-a-sky-garden-clean.zip` (no SDK, zero network requests) |
+| Poki | after acceptance | `dist/grow-a-sky-garden-poki.zip` (Poki SDK v2) |
+| GameDistribution | any | `dist/grow-a-sky-garden-gamedistribution.zip` (replace `GD_GAME_ID` in its `index.html` first) |
+
+One `index.html`, 0.28 MB (0.11 MB zipped), fonts embedded, all art and sound made in code, works offline, no external
+requests. Rebuild after any edit with `python3 build.py`; the build refuses to write anything unless the pacing gate
+passes (first New Season between minute 8 and 11, second session still has goals).
+
+## Covers, screenshots, videos
+
+- CrazyGames covers (title only, no other text): `covers/crazygames-1920x1080.png`, `covers/crazygames-800x1200.png`, `covers/crazygames-800x800.png`.
+- Poki covers (square, no text): `covers/poki-1024x1024.png`, `covers/poki-628x628.png`.
+- Preview videos, 20 s, 30 fps, H.264, muted: `preview-1920x1080.mp4` (16:9) and `preview-1080x1620.mp4` (2:3).
+- Screenshots: `screenshots/phone-1..3-*.png` (390x844 at 3x) and `screenshots/desktop-1..3-*.png` (1280x720 at 1.5x).
+- Re-render: `python3 tools/render_covers.py`, `python3 tools/capture.py all`. Winter set: `python3 tools/render_covers.py winter` and `python3 tools/capture.py previews winter`.
+
+## Title
+
+Grow a Sky Garden
+
+## One-line pitch
+
+You are the rain cloud: water a floating garden, zap it with lightning, snow and sunbeams for rare Golden and Rainbow plants, and shoo the crows.
+
+## Short description (about 160 characters)
+
+Be Puff the rain cloud. Rain grows your sky garden, lightning, snow and sunbeams make rare Golden and Rainbow plants. Shoo the crows and grow new islands.
+
+## Long description
+
+You are Puff, a little rain cloud floating over a garden in the sky. Drag Puff over the sprouts and the rain makes them bloom with a pop of petals. Each run lasts as long as your water tank, then you spend your petals on the Sky Tree and rain again.
+
+The weather is your toolbox. Tap to zap lightning that chains across your plants and makes them Shocked (x3). Snow turns them Frosted. Keep a sunbeam dry and the plant turns Golden (x5); rain on a sunbeam and you get a Rainbow (x10).
+
+Crows in bandit masks swoop in for your ripest plant. Rain on them to shoo them off, or zap them for a golden feather.
+
+Fill the Seed Book with 32 plants in 5 finishes, from the Daisy Doo to the Mythic Starbloom; every new find gives +1% petals for good. Wake the Giant Bud with rain, lightning, snow and sun in one run, and it blooms into a New Season: a new sky island, bigger petals, new plants. Sprinklers keep growing your garden while you are away, the Daily Gift grows every day you come back, and the Daily Sky is the same challenge garden for every player each day.
+
+Winter Skies (15 Nov to end of February): snow falling, Puff in a beanie, Snowy plants to find.
+
+## How to play
+
+1. Drag to move Puff. The rain grows the plants under it.
+2. Tap a plant (or click) to zap lightning. It chains to the plants around it.
+3. Snow with the SNOW button (or hold Space). Leave a sunbeam dry for Golden, or rain on it for a Rainbow.
+4. Rain on a crow to shoo it away before it takes your plant.
+5. When the tank runs dry, buy upgrades and tap RAIN!
+
+## Controls
+
+- Touch: drag anywhere to move the cloud (the rain lands just above your finger). Quick tap: lightning. SNOW button or two fingers: snow.
+- Mouse: the cloud follows the mouse. Click: lightning. Hold the right button: snow.
+- Keyboard: arrows or WASD to move, Z or J for lightning, hold Space or X to snow, Enter to rain again, M to mute, P or Esc to pause.
+
+## Category and tags
+
+**CrazyGames**: category Clicker (idle). Tags: Idle, Garden, Collect, Weather, Casual, Cute, Mobile, Relaxing (and Winter during the event). Single player; do not tick multiplayer.
+
+**Poki** (suggested; Poki assigns the final placement): Idle or Clicker. Tags: grow, garden, idle, weather, collect, casual, mobile.
+
+## Questionnaire answers
+
+- Multiplayer: no.
+- Orientation: both; portrait first on phones, the results card moves to the side in landscape.
+- Mobile and tablet: yes, touch controls built in.
+- Languages: English.
+- Saves: progress saved in the browser (CrazyGames: Data module).
+- Ads: `gameplayStart` on the first input and after menus, `gameplayStop` in menus, on a hidden tab and before every ad. `commercialBreak` only on the results card after a run, with a 3-second warning, never in the first 3 minutes, at most once every 3 minutes, and at the New Season. `rewardedBreak` is always optional and sits next to a same-size way out: Refill +8 s (once a session, after a near miss), Monsoon (double tank, every 3 runs), Collect x2 (welcome back), Claim x2 (daily gift). During CrazyGames Basic Launch the SDK answers `adsDisabledBasicLaunch`; the game then grants these rewards for free and labels them "Free".
+- Pause: the game and its sound stop when the tab is hidden and resume when it comes back. The CrazyGames sound button mutes it.
+- Age rating: PEGI 3 style. Cartoon crows take a plant and fly off; lightning makes plants sparkle. No violence, no blood, no chat, no data collection.
+- Original work: all names, characters, art and sound are original and made in code. Fonts: Lilita One and Fredoka (SIL Open Font License, licences inside the zip).
+
+## Owner upload steps (CrazyGames, about 20 minutes)
+
+1. Open https://developer.crazygames.com, sign in, **Games**, **Submit a game**, pick **HTML5**.
+2. Upload `dist/grow-a-sky-garden-crazygames.zip`. Open the preview the portal offers and play it once at desktop size and at phone size (no ads appear: ads are off in Basic Launch, and the rewarded buttons then say "Free").
+3. Paste the title, short and long description, controls and tags from this sheet. Category: Clicker.
+4. Upload the three covers from `covers/` (crazygames-*) and the two preview videos.
+5. Switch **Save progress** on.
+6. Age and content answers: no violence, blood, weapons, bad language, gambling, chat or purchases; no data collected (saves go to the CrazyGames Data module, browser storage as a fallback).
+7. Submit. Read the dashboard after 7 days and 500 plays: pass mark 8+ minutes average playtime, 80%+ past 1 minute, D1 7%+ (bot prediction in `tests/pacing_result.json`).
+
+## Notes for reviewers
+
+- Gameplay starts on load with no title screen; a hand shows the drag, then the tap for lightning.
+- `?event=winter` previews Winter Skies before 15 Nov; `?event=off` forces it off.
+- Version 1.0.0, 12 Oct 2026.
