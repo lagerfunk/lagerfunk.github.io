@@ -1,0 +1,59 @@
+Hangar Merge: CrazyGames paste sheet (game version 1.2.4, checked 2026-10-12)
+Folder: https://lagerfunk.github.io/dl/hangar-merge/
+
+WHAT TO DO (update of a game you already submitted, about 5 minutes)
+1. https://developer.crazygames.com : sign in, Games, open "Hangar Merge".
+2. Upload new files: hangar-merge-crazygames.zip (replaces the old build). Submit the update.
+3. Covers, videos and texts stay as they are. Use the fields below only if the form asks for them again.
+4. Optional check in the preview: press a bonus button (revive, x2 or unlock). It must either play a test ad and pay, or pay at once and say free. It must never do nothing.
+
+FILES IN THIS FOLDER
+Game build (ZIP):                 hangar-merge-crazygames.zip
+Cover 16:9 (1920x1080):           cover-landscape-1920x1080.png
+Cover 2:3 (800x1200):             cover-portrait-800x1200.png
+Cover 1:1 (800x800):              cover-square-800x800.png
+Preview videos: already uploaded with the first submission (not needed for this update).
+
+TITLE
+Hangar Merge
+
+SHORT DESCRIPTION (144 characters)
+Drop planes into the hangar, merge matching pairs into bigger jets, then launch the big ones for a bonus that grows the fuller your hangar gets.
+
+LONG DESCRIPTION (894 characters)
+Hangar Merge is a merge puzzle with a twist: the big planes take off.
+
+Drop paper planes, gliders and crop dusters into the hangar. Two of the same merge into the next plane up, all the way to the Jumbo, and three in one go skip a size. Every plane has a face: they blink, cheer when they are ready to fly and panic when the hangar is nearly full.
+
+From the Bizjet up, a plane glows when it is ready. Tap it and it climbs out of the hangar, freeing its space and paying a bonus. The fuller the hangar, the bigger the payout, so every takeoff is a bet: launch now to make room, or wait for a bigger multiplier. Tower requests pay double, two Jumbos leave together in formation, and chains of merges multiply your score.
+
+Coins from every flight build your airport. Collect all 10 planes and their golden twins, unlock paint jobs, and play the Daily Flight: the same planes for everyone each day.
+
+CONTROLS
+Mouse: Move to aim, click to drop. Click a glowing plane to take off.
+Touch: Drag to aim, let go to drop. Tap a glowing plane to take off.
+Keyboard: Left and Right arrows or A and D to aim. Space, Down, S or Enter to drop. Up, W or T to launch the biggest ready plane. Q to swap. P for the menu. M to mute.
+
+CATEGORY: Puzzle (second choice: Casual)
+TAGS: merge, airplane, 2048, drop, casual, puzzle, mouse, touch
+ORIENTATION: Both. Portrait on phones (own portrait layout), landscape on desktop and tablet, scales to any 16:9 frame.
+MULTIPLAYER: No
+LANGUAGE: English
+SAVE PROGRESS: on (the game saves through the CrazyGames data module)
+
+AGE AND CONTENT ANSWERS (CrazyGames requires PEGI 12 or lower)
+- Violence: None. Cartoon slapstick only: No violence at all.
+- Blood, gore, injury: None
+- Weapons: None
+- Sexual content or nudity: None
+- Bad language: None. There is no text input and no chat
+- Drugs, alcohol, tobacco: None
+- Gambling or simulated gambling: None. No real money, no purchases, no loot boxes you can buy. Coins are earned by playing
+- Fear or horror: None. The Halloween ghost planes are cute and smiling.
+- Chat, user-generated content, online multiplayer: None
+- Data collected from players: None. Progress is saved through the CrazyGames data module (browser storage as a fallback). No accounts, no analytics, no cookies, no external requests
+- In-app purchases, external links, cross-promotion: None
+- Suggested rating: PEGI 3 to 7 style, well inside the CrazyGames PEGI 12 ceiling
+
+ADS: none during Basic Launch (CrazyGames switches them off). The game then gives its rewarded bonuses for free.
+From Full Launch the bonus buttons play a real ad and pay only when the ad finishes.

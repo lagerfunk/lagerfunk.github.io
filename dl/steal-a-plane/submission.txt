@@ -1,0 +1,59 @@
+Steal a Plane: CrazyGames paste sheet (game version 1.0.4, checked 2026-10-12)
+Folder: https://lagerfunk.github.io/dl/steal-a-plane/
+
+WHAT TO DO (update of a game you already submitted, about 5 minutes)
+1. https://developer.crazygames.com : sign in, Games, open "Steal a Plane".
+2. Upload new files: steal-a-plane-crazygames.zip (replaces the old build). Submit the update.
+3. Covers, videos and texts stay as they are. Use the fields below only if the form asks for them again.
+4. Optional check in the preview: press a bonus button (revive, x2 or unlock). It must either play a test ad and pay, or pay at once and say free. It must never do nothing.
+
+FILES IN THIS FOLDER
+Game build (ZIP):                 steal-a-plane-crazygames.zip
+Cover 16:9 (1920x1080):           cover-landscape-1920x1080.png
+Cover 2:3 (800x1200):             cover-portrait-800x1200.png
+Cover 1:1 (800x800):              cover-square-800x800.png
+Preview videos: already uploaded with the first submission (not needed for this update).
+
+TITLE
+Steal a Plane
+
+SHORT DESCRIPTION (147 characters)
+Steal planes from rival airfields, take off from their runway with one perfect tap and dodge the guard goose. Your hangar earns coins every second.
+
+LONG DESCRIPTION (1037 characters)
+Your airfield earns coins every second from the planes parked in its hangar, and the rarer the plane, the more it earns. Buy planes as they roll down the Plane Market, or take the fast way: steal them.
+
+Three rival pilots run the airfields next door. When their gate laser switches off, sneak in, grab a plane and get out. Taxi it home, or try the takeoff heist: roll down the rival's own runway and tap when the needle hits the green. A perfect takeoff pays double and can paint your plane gold.
+
+Watch out for the guard goose in the hi-vis vest. When it is awake it will chase you down and honk you right out of the field. And while you are away, the rivals come for your planes, so race home and tackle the thief before they reach their gate.
+
+Collect 20 planes from a paper plane to a golden jumbo and a flying saucer, in Gold, Diamond and Rainbow paint jobs. Fill the Plane Book for bonus income, upgrade your gate lock, sneakers and goose, and rebirth for a permanent income multiplier. Your fleet keeps earning while you are away.
+
+CONTROLS
+Mouse: Drag to move, or click the ground to walk there. Click market planes to buy. Click during a takeoff.
+Touch: Drag anywhere to move (floating joystick). Tap a plane on the market to buy it. During a takeoff, tap anywhere.
+Keyboard: WASD or the arrow keys to move. Space or Enter to take off. P to pause, M to mute.
+
+CATEGORY: Clicker (second choice: Casual)
+TAGS: airplane, idle, collect, stealth, tycoon, casual, funny, mouse, touch
+ORIENTATION: Both. Portrait first on phones, landscape on desktop and tablet.
+MULTIPLAYER: No. The rival pilots are computer controlled. Do not tick multiplayer.
+LANGUAGE: English
+SAVE PROGRESS: on (the game saves through the CrazyGames data module)
+
+AGE AND CONTENT ANSWERS (CrazyGames requires PEGI 12 or lower)
+- Violence: None. Cartoon slapstick only: A goose honks and throws you out of the field. Tackling a thief is a bump.
+- Blood, gore, injury: None
+- Weapons: None
+- Sexual content or nudity: None
+- Bad language: None. There is no text input and no chat
+- Drugs, alcohol, tobacco: None
+- Gambling or simulated gambling: None. No real money, no purchases, no loot boxes you can buy. Coins are earned by playing
+- Fear or horror: None. The Halloween version has witch hats and pumpkins.
+- Chat, user-generated content, online multiplayer: None
+- Data collected from players: None. Progress is saved through the CrazyGames data module (browser storage as a fallback). No accounts, no analytics, no cookies, no external requests
+- In-app purchases, external links, cross-promotion: None
+- Suggested rating: PEGI 3 to 7 style, well inside the CrazyGames PEGI 12 ceiling
+
+ADS: none during Basic Launch (CrazyGames switches them off). The game then gives its rewarded bonuses for free.
+From Full Launch the bonus buttons play a real ad and pay only when the ad finishes.

@@ -1,0 +1,57 @@
+Don't Wake the Giant: CrazyGames paste sheet (game version 1.1.4, checked 2026-10-12)
+Folder: https://lagerfunk.github.io/dl/dont-wake-the-giant/
+
+WHAT TO DO (update of a game you already submitted, about 5 minutes)
+1. https://developer.crazygames.com : sign in, Games, open "Don't Wake the Giant".
+2. Upload new files: dont-wake-the-giant-crazygames.zip (replaces the old build). Submit the update.
+3. Covers, videos and texts stay as they are. Use the fields below only if the form asks for them again.
+4. Optional check in the preview: press a bonus button (revive, x2 or unlock). It must either play a test ad and pay, or pay at once and say free. It must never do nothing.
+
+FILES IN THIS FOLDER
+Game build (ZIP):                 dont-wake-the-giant-crazygames.zip
+Cover 16:9 (1920x1080):           cover-landscape-1920x1080.png
+Cover 2:3 (800x1200):             cover-portrait-800x1200.png
+Cover 1:1 (800x800):              cover-square-800x800.png
+Preview videos: already uploaded with the first submission (not needed for this update).
+
+TITLE
+Don't Wake the Giant
+
+SHORT DESCRIPTION (170 characters)
+Sneak your grabber into a sleeping giant's treasure pile and steal the weird creatures inside. The deeper you reach, the rarer the loot, but one open eye and he wakes up.
+
+LONG DESCRIPTION (1064 characters)
+A giant is fast asleep on a mountain of gold, and the pile is full of strange creatures. Hold to push your grabber into the pile, let go to grab. The deeper you reach, the rarer the creature, and the deepest ones sit right under his chin.
+
+He only stirs at the top of a breath, and he always warns you: the snoring stops, a red exclamation mark pops up, an eyebrow twitches, then the eye cracks open. If your grabber is still in the pile when it opens, he wakes with a roar and swats you into the sky, and half your loot spills. Pull out at the last instant for a close call and double coins. Later in the night he gets restless and starts faking: a snort, a lip smack, a popping snot bubble. Learn to tell a real stir from a fake.
+
+Every creature is two critters stitched together, like Toasty Chompini or Froggo Meowzini: 256 to collect across six rarities, plus Golden, Rainbow, Huge and Tiny ones. Spend your coins on quicker paws, softer socks, bigger ears and a longer arm that opens the vault under his chin. Survive until dawn and the next night pays more.
+
+CONTROLS
+Mouse: Press and hold anywhere to reach, release to grab.
+Touch: Press and hold anywhere to reach, lift your finger to grab.
+Keyboard: Hold Space, Up, W or Enter to reach, release to grab. M to mute, P to pause, B for the creature book.
+
+CATEGORY: Casual (second choice: Clicker)
+TAGS: one button, stealth, collecting, monster, funny, casual, mouse, touch
+ORIENTATION: Both. Own portrait layout on phones, wider scene in landscape, scales to any 16:9 frame.
+MULTIPLAYER: No
+LANGUAGE: English
+SAVE PROGRESS: on (the game saves through the CrazyGames data module)
+
+AGE AND CONTENT ANSWERS (CrazyGames requires PEGI 12 or lower)
+- Violence: None. Cartoon slapstick only: The giant swats the thief into the sky with a twinkle. Nobody is hurt.
+- Blood, gore, injury: None
+- Weapons: None
+- Sexual content or nudity: None
+- Bad language: None. There is no text input and no chat
+- Drugs, alcohol, tobacco: None
+- Gambling or simulated gambling: None. No real money, no purchases, no loot boxes you can buy. Coins are earned by playing
+- Fear or horror: Mild. A big, grumpy, cartoon giant. The Halloween version has a pumpkin troll.
+- Chat, user-generated content, online multiplayer: None
+- Data collected from players: None. Progress is saved through the CrazyGames data module (browser storage as a fallback). No accounts, no analytics, no cookies, no external requests
+- In-app purchases, external links, cross-promotion: None
+- Suggested rating: PEGI 3 to 7 style, well inside the CrazyGames PEGI 12 ceiling
+
+ADS: none during Basic Launch (CrazyGames switches them off). The game then gives its rewarded bonuses for free.
+From Full Launch the bonus buttons play a real ad and pay only when the ad finishes.

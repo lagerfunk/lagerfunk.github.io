@@ -1,0 +1,59 @@
+Moon Snatch.io: CrazyGames paste sheet (game version 1.1.4, checked 2026-10-12)
+Folder: https://lagerfunk.github.io/dl/moon-snatch/
+
+WHAT TO DO (update of a game you already submitted, about 5 minutes)
+1. https://developer.crazygames.com : sign in, Games, open "Moon Snatch.io".
+2. Upload new files: moon-snatch-crazygames.zip (replaces the old build). Submit the update.
+3. Covers, videos and texts stay as they are. Use the fields below only if the form asks for them again.
+4. Optional check in the preview: press a bonus button (revive, x2 or unlock). It must either play a test ad and pay, or pay at once and say free. It must never do nothing.
+
+FILES IN THIS FOLDER
+Game build (ZIP):                 moon-snatch-crazygames.zip
+Cover 16:9 (1920x1080):           cover-landscape-1920x1080.png
+Cover 2:3 (800x1200):             cover-portrait-800x1200.png
+Cover 1:1 (800x800):              cover-square-800x800.png
+Preview videos: already uploaded with the first submission (not needed for this update).
+
+TITLE
+Moon Snatch.io
+
+SHORT DESCRIPTION (136 characters)
+Be a planet. Grab moons, fling them at rivals and snatch their orbit. Every shot makes you smaller. Biggest planet after 3 minutes wins.
+
+LONG DESCRIPTION (821 characters)
+You are a planet with a face, and your moons are everything: your score, your shield and your ammo at the same time.
+
+Fly into loose moons to grow. Fling a moon at a rival and a third of their moons burst out like a pinata for anyone to grab. Big planets knock out small ones in one hit, so small planets fight back by diving through a big planet's orbit and snatching its moons. Every shot you take makes you a little smaller, so choose your moment.
+
+Rounds last 3 minutes against bots with their own styles: hunters, snipers, hoarders, snatchers and pure chaos. Grab the Golden Moon worth 10 moons, survive the Final 30 moon rain and finish the round wearing the crown. Earn coins for planet skins and trails, and keep your daily challenge streak going.
+
+Arena action against bots. No account needed, no online players.
+
+CONTROLS
+Mouse: The planet follows the mouse. Click to fling a moon at the highlighted planet, or wherever you click.
+Touch: Drag anywhere to steer. Tap to fling. Two fingers work together: steer with one, tap with the other.
+Keyboard: WASD or the arrow keys to steer. Space, J or Enter to fling. P to pause, M to mute.
+
+CATEGORY: .io (second choice: Action)
+TAGS: space, arena, io, casual, action, bots, mouse, touch
+ORIENTATION: Both. Works in portrait and landscape on phone, tablet and desktop.
+MULTIPLAYER: No. The rivals are bots. Do not tick online multiplayer.
+LANGUAGE: English
+SAVE PROGRESS: on (the game saves through the CrazyGames data module)
+
+AGE AND CONTENT ANSWERS (CrazyGames requires PEGI 12 or lower)
+- Violence: None. Cartoon slapstick only: Cartoon planets bump into each other and burst into stars and moons.
+- Blood, gore, injury: None
+- Weapons: None
+- Sexual content or nudity: None
+- Bad language: None. There is no text input and no chat
+- Drugs, alcohol, tobacco: None
+- Gambling or simulated gambling: None. No real money, no purchases, no loot boxes you can buy. Coins are earned by playing
+- Fear or horror: None. The Halloween version has pumpkins and a witch hat.
+- Chat, user-generated content, online multiplayer: None
+- Data collected from players: None. Progress is saved through the CrazyGames data module (browser storage as a fallback). No accounts, no analytics, no cookies, no external requests
+- In-app purchases, external links, cross-promotion: None
+- Suggested rating: PEGI 3 to 7 style, well inside the CrazyGames PEGI 12 ceiling
+
+ADS: none during Basic Launch (CrazyGames switches them off). The game then gives its rewarded bonuses for free.
+From Full Launch the bonus buttons play a real ad and pay only when the ad finishes.
