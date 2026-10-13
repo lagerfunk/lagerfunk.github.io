@@ -292,7 +292,7 @@ footer { color: var(--muted); font-size: 12px; display: grid; gap: 4px; }
     add('path', { d: 'M' + pts.map((p) => p.join(',')).join(' L'), class: 'line' });
     add('circle', { cx: pts.at(-1)[0], cy: pts.at(-1)[1], r: 4, class: 'endpoint' });
     add('text', { x: pts.at(-1)[0] - 6, y: pts.at(-1)[1] - 10, 'text-anchor': 'end' }, '€4,842');
-    MONTHLY.forEach(([m], i) => { if (i % 2 === 0 || i === MONTHLY.length - 1) add('text', { x: x(i), y: H - 10, 'text-anchor': 'middle' }, m); });
+    MONTHLY.forEach(([m], i) => { if (i % 2 === 1) add('text', { x: x(i), y: H - 10, 'text-anchor': 'middle' }, m); });
     $('chart').replaceChildren(svg);
   }
 
