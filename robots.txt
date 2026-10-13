@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /dl/
 Disallow: /factory/
+Disallow: /5090/

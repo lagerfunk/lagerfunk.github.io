@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>5090 Monitor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a departure board for one card. Live status band first, then the three shops as rows, then the limit, the
+   cheapest orderable cards, the price trend and the drop history. Phone first, one column, two columns from 820px. */
+:root {
+  --bg: #eef2ef;
+  --panel: #f8faf8;
+  --ink: #142019;
+  --muted: #5b6a61;
+  --line: #d3dbd5;
+  --accent: #0d6b58;
+  --ok: #17803d;
+  --warn: #b45309;
+  --hot: #c2410c;
+  --hot-ink: #ffffff;
+  --display: "Big Shoulders Display", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1412; --panel: #151d1a; --ink: #e4ebe7; --muted: #8e9c94; --line: #26322d;
+    --accent: #3cc6a5; --ok: #4ade80; --warn: #fbbf24; --hot: #fb6a2c; --hot-ink: #160a03; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1412; --panel: #151d1a; --ink: #e4ebe7; --muted: #8e9c94; --line: #26322d;
+  --accent: #3cc6a5; --ok: #4ade80; --warn: #fbbf24; --hot: #fb6a2c; --hot-ink: #160a03; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--body); padding: env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px); }
+main { max-width: 1040px; margin: 0 auto; padding-inline: 16px; padding-block: 18px 40px; display: grid; gap: 18px; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+header { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 9vw, 64px); line-height: .9; margin: 0; letter-spacing: .01em; text-wrap: balance; }
+h1 small { display: block; font: 600 12px/1.4 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.live { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); flex: none; }
+.dot.on { background: var(--ok); box-shadow: 0 0 0 0 var(--ok); animation: pulse 2s infinite; }
+.dot.stale { background: var(--warn); }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 55%, transparent); } 70% { box-shadow: 0 0 0 8px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+@media (prefers-reduced-motion: reduce) { .dot.on { animation: none; } }
+
+.band { border-radius: 14px; padding: 18px 20px; display: grid; gap: 6px; border: 1px solid var(--line); background: var(--panel); }
+.band .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 46px); line-height: 1; text-wrap: balance; }
+.band.drop { background: var(--hot); color: var(--hot-ink); border-color: var(--hot); }
+.band.drop a { color: var(--hot-ink); font-weight: 600; }
+.band .sub { color: inherit; opacity: .85; }
+.buy { display: inline-block; margin-top: 6px; padding: 10px 16px; border-radius: 10px; background: var(--hot-ink); color: var(--hot) !important; font-weight: 600; text-decoration: none; }
+
+.grid { display: grid; gap: 18px; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .grid { grid-template-columns: 1.2fr 1fr; } }
+section { min-width: 0; display: grid; gap: 10px; align-content: start; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 24px; letter-spacing: .02em; margin: 0; }
+
+.shops { display: grid; border-top: 1px solid var(--line); }
+.shop { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.shop .name { font-weight: 600; display: flex; gap: 8px; align-items: center; }
+.shop .meta { color: var(--muted); font-size: 13px; grid-column: 1 / -1; }
+.pill { font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; align-self: center; }
+.pill.ok { color: var(--ok); } .pill.warn { color: var(--warn); } .pill.hot { color: var(--hot); } .pill.mute { color: var(--muted); }
+.price { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+
+.limit { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.limit div { min-width: 0; }
+.limit .v { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 20px; font-weight: 600; }
+.limit .v.key { color: var(--accent); }
+.note { color: var(--muted); font-size: 13px; max-width: 65ch; margin: 0; }
+
+ol.cards, ul.drops { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--line); }
+ol.cards li, ul.drops li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+ol.cards li a { overflow-wrap: anywhere; }
+.small { color: var(--muted); font-size: 12px; grid-column: 1 / -1; }
+
+.chart-wrap { overflow-x: auto; }
+svg.chart { width: 100%; min-width: 300px; height: auto; display: block; }
+.chart text { fill: var(--muted); font: 11px var(--mono); }
+.chart .grid-line { stroke: var(--line); stroke-width: 1; }
+.chart .area { fill: color-mix(in srgb, var(--accent) 16%, transparent); }
+.chart .line { fill: none; stroke: var(--accent); stroke-width: 2; }
+.chart .uvp { stroke: var(--muted); stroke-dasharray: 4 4; stroke-width: 1; fill: none; }
+.chart .endpoint { fill: var(--accent); }
+footer { color: var(--muted); font-size: 12px; display: grid; gap: 4px; }
+.err { color: var(--warn); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1><small>RTX 5090 · Germany</small>5090 Monitor</h1>
+    <div class="live" aria-live="polite"><span class="dot" id="dot"></span><span id="liveText">Loading the watcher's log…</span></div>
+  </header>
+
+  <div class="band" id="band">
+    <div class="label">Right now</div>
+    <div class="big" id="bandBig">Waiting for the first reading</div>
+    <div class="sub" id="bandSub">Shops are checked every 10 to 30 seconds, day and night. This page refreshes every minute.</div>
+  </div>
+
+  <div class="grid">
+    <section aria-labelledby="h-shops">
+      <h2 id="h-shops">Shops</h2>
+      <div class="shops" id="shops"></div>
+      <p class="note">Caseking, Proshop, computeruniverse, Cyberport, MediaMarkt, Saturn and notebooksbilliger refuse automated checks from cloud servers, so they are not on this board.</p>
+    </section>
+
+    <section aria-labelledby="h-limit">
+      <h2 id="h-limit">Today's drop limit</h2>
+      <div class="limit">
+        <div><div class="label">Alert at or under</div><div class="v key" id="cap">…</div></div>
+        <div><div class="label">14-day market low</div><div class="v" id="floor">…</div></div>
+        <div><div class="label">NVIDIA list price</div><div class="v" id="uvp">…</div></div>
+      </div>
+      <p class="note" id="capNote">A 5090 counts as a drop at the fixed limit, or when it is 10% under the market low of the last 14 days, whichever is higher. Drops go to your Telegram within seconds.</p>
+    </section>
+
+    <section aria-labelledby="h-cards">
+      <h2 id="h-cards">Cheapest orderable 5090s</h2>
+      <ol class="cards" id="cards"></ol>
+    </section>
+
+    <section aria-labelledby="h-trend">
+      <h2 id="h-trend">Cheapest 5090 in Germany</h2>
+      <div class="chart-wrap" id="chart"></div>
+      <p class="note">Lowest price per month across all German shops on geizhals.de (read 13 Oct 2026; it may include offers that were not orderable). The dashed line is NVIDIA's list price of €2,099.</p>
+    </section>
+
+    <section aria-labelledby="h-drops">
+      <h2 id="h-drops">Drop history</h2>
+      <ul class="drops" id="drops"></ul>
+    </section>
+  </div>
+
+  <footer>
+    <span id="foot">Data: the watcher's log on GitHub (lagerfunk/lagerfunk, branch drops).</span>
+    <span>Nothing is bought automatically. Most shops sell one per customer.</span>
+  </footer>
+</main>
+
+<script>
+(() => {
+  const URL_LOG = 'https://api.github.com/repos/lagerfunk/lagerfunk/contents/drops.json?ref=drops';
+  const POLL_MS = 60000;
+  const SHOPS = [
+    { id: 'nvidia-fe', name: 'NVIDIA', what: 'Founders Edition' },
+    { id: 'alternate-rtx-5090', name: 'ALTERNATE', what: '24 cheapest 5090s' },
+    { id: 'mindfactory-rtx-5090', name: 'Mindfactory', what: '5090 search' },
+  ];
+  // geizhals.de, lowest 5090 price per month across German shops, read 13 Oct 2026 (October: month to date).
+  const MONTHLY = [['Nov 25', 2019], ['Dec 25', 2019], ['Jan 26', 2226], ['Feb 26', 2529], ['Mar 26', 2789], ['Apr 26', 3121], ['May 26', 3039], ['Jun 26', 3184], ['Jul 26', 3663], ['Aug 26', 4035], ['Sep 26', 3499], ['Oct 26', 4842]];
+  const UVP = 2099;
+
+  const $ = (id) => document.getElementById(id);
+  const eur = (n) => (n == null ? '–' : '€' + Math.round(n).toLocaleString('en-GB'));
+  const ago = (iso) => {
+    if (!iso) return 'never';
+    const s = Math.max(0, Math.round((Date.now() - Date.parse(iso)) / 1000));
+    if (s < 90) return s + ' s ago';
+    if (s < 5400) return Math.round(s / 60) + ' min ago';
+    if (s < 172800) return Math.round(s / 3600) + ' h ago';
+    return Math.round(s / 86400) + ' days ago';
+  };
+  const when = (iso) => new Date(iso).toLocaleString('en-GB', { timeZone: 'Europe/Berlin', day: '2-digit', month: 'short', year: '2-digit', hour: '2-digit', minute: '2-digit' });
+  const dur = (sec) => (sec == null ? 'still open' : sec < 60 ? sec + ' s' : sec < 3600 ? Math.round(sec / 60) + ' min' : (Math.round(sec / 360) / 10) + ' h');
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+  let db = null;
+  let lastFetchOk = 0;
+  let fetchError = null;
+
+  function render() {
+    // Live line
+    const saved = db?.savedAt ?? null;
+    const age = saved ? (Date.now() - Date.parse(saved)) / 1000 : Infinity;
+    const dot = $('dot');
+    dot.className = 'dot ' + (age < 180 ? 'on' : 'stale');
+    $('liveText').textContent = fetchError ? fetchError : saved ? 'Live · log updated ' + ago(saved) : 'Loading the watcher’s log…';
+    $('liveText').className = fetchError ? 'err' : '';
+    if (!db) return;
+
+    // Open drops first
+    const open = Object.entries(db.products ?? {}).filter(([, p]) => p.openDrop && p.model === 'rtx-5090').map(([k, p]) => ({ key: k, ...p })).sort((a, b) => a.price - b.price);
+    const band = $('band');
+    const lim = db.limits?.['rtx-5090'] ?? {};
+    if (open.length) {
+      const p = open[0];
+      band.className = 'band drop';
+      $('bandBig').textContent = 'DROP: ' + eur(p.price) + ' at ' + p.shop;
+      const sub = $('bandSub');
+      sub.textContent = (p.title ?? 'RTX 5090') + (open.length > 1 ? ' (+' + (open.length - 1) + ' more)' : '') + '. ';
+      const a = el('a', 'buy', 'Open the shop');
+      a.href = p.url; a.target = '_blank'; a.rel = 'noopener';
+      sub.appendChild(a);
+    } else {
+      band.className = 'band';
+      const cheapest = Math.min(...Object.values(db.sources ?? {}).map((s) => s.cheapest ?? Infinity));
+      $('bandBig').textContent = 'No 5090 at or under ' + eur(lim.cap);
+      $('bandSub').textContent = (Number.isFinite(cheapest) ? 'Cheapest orderable right now: ' + eur(cheapest) + '. ' : '') + 'Shops are checked every 10 to 30 seconds, day and night. This page refreshes every minute.';
+    }
+
+    // Shops
+    const shops = $('shops');
+    shops.replaceChildren();
+    for (const s of SHOPS) {
+      const st = db.sources?.[s.id] ?? null;
+      const row = el('div', 'shop');
+      const name = el('div', 'name');
+      name.append(el('span', null, s.name));
+      let pill;
+      if (!st) pill = el('span', 'pill mute', 'no reading yet');
+      else if ((st.streak ?? 0) >= 3) pill = el('span', 'pill warn', 'not answering');
+      else if (s.id === 'nvidia-fe') {
+        const fe = db.products?.['nvidia:rtx-5090-fe'];
+        pill = fe?.inStock ? el('span', 'pill hot', 'IN STOCK') : el('span', 'pill mute', 'sold out');
+      } else if ((st.inStock ?? 0) > 0) pill = el('span', 'pill ok', st.inStock + ' in stock');
+      else pill = el('span', 'pill mute', st.cards ? 'none orderable' : 'no 5090 listed');
+      name.append(pill);
+      row.append(name);
+      const price = el('div', 'price', s.id === 'nvidia-fe' ? eur(db.products?.['nvidia:rtx-5090-fe']?.price) : eur(st?.cheapest));
+      row.append(price);
+      const meta = el('div', 'meta');
+      const every = st?.everySec ? 'every ' + st.everySec + ' s' : '';
+      meta.textContent = s.what + ' · checked ' + ago(st?.lastOkAt) + (every ? ' · ' + every : '') + (st?.streak >= 3 && st?.lastError ? ' · last error: ' + st.lastError : '');
+      row.append(meta);
+      shops.append(row);
+    }
+
+    // Limit
+    $('cap').textContent = eur(lim.cap);
+    $('floor').textContent = eur(lim.floor);
+    $('uvp').textContent = eur(lim.uvp ?? UVP);
+
+    // Cheapest orderable cards
+    const cards = Object.values(db.products ?? {}).filter((p) => p.model === 'rtx-5090' && p.inStock && p.price != null).sort((a, b) => a.price - b.price).slice(0, 8);
+    const ol = $('cards');
+    ol.replaceChildren();
+    if (!cards.length) ol.append(Object.assign(el('li'), { textContent: 'No 5090 can be ordered at the watched shops right now.' }));
+    for (const p of cards) {
+      const li = el('li');
+      const a = el('a', null, p.title ?? 'RTX 5090');
+      a.href = p.url; a.target = '_blank'; a.rel = 'noopener';
+      li.append(a, el('span', 'price', eur(p.price)), el('span', 'small', p.shop + (p.stockText ? ' · ' + p.stockText : '')));
+      ol.append(li);
+    }
+
+    // Drop history, newest first
+    const ul = $('drops');
+    ul.replaceChildren();
+    const drops = [...(db.drops ?? [])].filter((d) => d.model === 'rtx-5090').reverse();
+    if (!drops.length) ul.append(Object.assign(el('li'), { textContent: 'No drop seen yet.' }));
+    for (const d of drops) {
+      const li = el('li');
+      li.append(el('span', null, (d.approx ? 'about ' : '') + when(d.start) + ' · ' + d.shop), el('span', 'price', eur(d.minPrice ?? d.price)));
+      li.append(el('span', 'small', (d.title ?? 'RTX 5090') + ' · ' + (d.end ? 'lasted ' + (d.approx ? 'about ' : '') + dur(d.durationSec) : 'still open') + (d.source ? ' · ' + d.source.split(':')[0] : '')));
+      ul.append(li);
+    }
+  }
+
+  function drawChart() {
+    const W = 560, H = 220, L = 52, R = 14, T = 14, B = 30;
+    const max = 5000, min = 0;
+    const x = (i) => L + (i * (W - L - R)) / (MONTHLY.length - 1);
+    const y = (v) => T + (H - T - B) * (1 - (v - min) / (max - min));
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.setAttribute('class', 'chart');
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', 'Lowest 5090 price per month in Germany, from about €2,000 in November 2025 to about €4,800 in October 2026');
+    const add = (tag, attrs, text) => { const e = document.createElementNS(ns, tag); for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v); if (text != null) e.textContent = text; svg.append(e); return e; };
+    for (const v of [0, 1000, 2000, 3000, 4000, 5000]) {
+      add('line', { x1: L, x2: W - R, y1: y(v), y2: y(v), class: 'grid-line' });
+      add('text', { x: L - 8, y: y(v) + 4, 'text-anchor': 'end' }, v === 0 ? '0' : '€' + v / 1000 + 'k');
+    }
+    add('line', { x1: L, x2: W - R, y1: y(UVP), y2: y(UVP), class: 'uvp' });
+    const pts = MONTHLY.map(([, v], i) => [x(i), y(v)]);
+    add('path', { d: `M${pts[0][0]},${y(0)} ` + pts.map((p) => `L${p[0]},${p[1]}`).join(' ') + ` L${pts.at(-1)[0]},${y(0)} Z`, class: 'area' });
+    add('path', { d: 'M' + pts.map((p) => p.join(',')).join(' L'), class: 'line' });
+    add('circle', { cx: pts.at(-1)[0], cy: pts.at(-1)[1], r: 4, class: 'endpoint' });
+    add('text', { x: pts.at(-1)[0] - 6, y: pts.at(-1)[1] - 10, 'text-anchor': 'end' }, '€4,842');
+    MONTHLY.forEach(([m], i) => { if (i % 2 === 0 || i === MONTHLY.length - 1) add('text', { x: x(i), y: H - 10, 'text-anchor': 'middle' }, m); });
+    $('chart').replaceChildren(svg);
+  }
+
+  async function load() {
+    try {
+      const res = await fetch(URL_LOG, { cache: 'no-cache', headers: { Accept: 'application/vnd.github.raw+json' } });
+      if (res.status === 403 || res.status === 429) {
+        const reset = Number(res.headers.get('x-ratelimit-reset')) * 1000;
+        fetchError = 'GitHub limits this page for a while' + (reset ? ' (until ' + new Date(reset).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) + ')' : '') + '. Telegram alerts keep working.';
+      } else if (!res.ok) {
+        fetchError = 'Could not read the log (HTTP ' + res.status + '). Trying again in a minute.';
+      } else {
+        db = await res.json();
+        fetchError = null;
+        lastFetchOk = Date.now();
+      }
+    } catch (e) {
+      fetchError = 'Offline or blocked. Trying again in a minute.';
+    }
+    render();
+  }
+
+  drawChart();
+  load();
+  setInterval(load, POLL_MS);
+  setInterval(render, 5000); // keeps the "x s ago" counters moving between refreshes
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - lastFetchOk > 30000) load(); });
+})();
+</script>
+</body>
+</html>
