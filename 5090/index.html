@@ -109,14 +109,14 @@ footer { color: var(--muted); font-size: 12px; display: grid; gap: 4px; }
   <div class="band" id="band">
     <div class="label">Right now</div>
     <div class="big" id="bandBig">Waiting for the first reading</div>
-    <div class="sub" id="bandSub">Shops are checked every 10 to 30 seconds, day and night. This page refreshes every minute.</div>
+    <div class="sub" id="bandSub">Shops are checked every 10 seconds, day and night. This page refreshes every minute.</div>
   </div>
 
   <div class="grid">
     <section aria-labelledby="h-shops">
       <h2 id="h-shops">Shops</h2>
       <div class="shops" id="shops"></div>
-      <p class="note">Caseking, Proshop, computeruniverse, Cyberport, MediaMarkt, Saturn and notebooksbilliger refuse automated checks from cloud servers, so they are not on this board.</p>
+      <p class="note">Mindfactory, Caseking, Proshop, computeruniverse, Cyberport, MediaMarkt, Saturn and notebooksbilliger refuse automated checks from cloud servers, so they are not on this board.</p>
     </section>
 
     <section aria-labelledby="h-limit">
@@ -159,7 +159,6 @@ footer { color: var(--muted); font-size: 12px; display: grid; gap: 4px; }
   const SHOPS = [
     { id: 'nvidia-fe', name: 'NVIDIA', what: 'Founders Edition' },
     { id: 'alternate-rtx-5090', name: 'ALTERNATE', what: '24 cheapest 5090s' },
-    { id: 'mindfactory-rtx-5090', name: 'Mindfactory', what: '5090 search' },
   ];
   // geizhals.de, lowest 5090 price per month across German shops, read 13 Oct 2026 (October: month to date).
   const MONTHLY = [['Nov 25', 2019], ['Dec 25', 2019], ['Jan 26', 2226], ['Feb 26', 2529], ['Mar 26', 2789], ['Apr 26', 3121], ['May 26', 3039], ['Jun 26', 3184], ['Jul 26', 3663], ['Aug 26', 4035], ['Sep 26', 3499], ['Oct 26', 4842]];
@@ -210,7 +209,7 @@ footer { color: var(--muted); font-size: 12px; display: grid; gap: 4px; }
       band.className = 'band';
       const cheapest = Math.min(...Object.values(db.sources ?? {}).map((s) => s.cheapest ?? Infinity));
       $('bandBig').textContent = 'No 5090 at or under ' + eur(lim.cap);
-      $('bandSub').textContent = (Number.isFinite(cheapest) ? 'Cheapest orderable right now: ' + eur(cheapest) + '. ' : '') + 'Shops are checked every 10 to 30 seconds, day and night. This page refreshes every minute.';
+      $('bandSub').textContent = (Number.isFinite(cheapest) ? 'Cheapest orderable right now: ' + eur(cheapest) + '. ' : '') + 'Shops are checked every 10 seconds, day and night. This page refreshes every minute.';
     }
 
     // Shops
